@@ -8,6 +8,7 @@ import Editprofileform from './Edirprofileform'
 import Profilebio from './Profilebio'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBirthdayCake, faPen } from '@fortawesome/free-solid-svg-icons'
+//import dotenv from "dotenv"
 import axios from "axios"
 
 const Userprofile = ({ slidein }) => {
@@ -38,14 +39,14 @@ const Userprofile = ({ slidein }) => {
         const { latitude, longitude } = position.coords;
         try {
           const weatherResponse = await axios.get(
-            `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=2bb6a6380def2fbcd296df492ca0c194`
+            `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
           );
           const weatherDescription = weatherResponse.data.weather[0].description;
           const temperature = (weatherResponse.data.main.temp - 273.15).toFixed(2); // Convert Kelvin to Celsius
           const weatherEmoji = weatherEmojis[weatherDescription] || "";
           setWeather(`Condition: ${weatherDescription} ${weatherEmoji}, Temperature: ${temperature} °C`);
           setMapUrl(
-            `https://www.google.com/maps/embed/v1/place?key=AIzaSyBGKDXL6AnpRWHn0rtW_bBXc1jpUhzkRlA&q=${latitude},${longitude}`
+            `https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&q=${latitude},${longitude}`
           );
         } catch (error) {
           console.error('Error fetching location or weather data:', error);
