@@ -80,3 +80,23 @@
     cursor: pointer;
   }
   
+/* UserProfile.css */
+.location-btn {
+  background-color: #008CBA; /* Blue background */
+  border: 2px solid #005f73; /* Darker blue border */
+  color: white; /* White text */
+  padding: 10px 24px; /* Some padding */
+  text-align: center; /* Centered text */
+  text-decoration: none; /* Remove underline */
+  display: inline-block; /* Make the button inline-block */
+  font-size: 14px; /* Font size */
+  margin: 8px 4px; /* Some margin */
+  cursor: pointer; /* Pointer/hand icon */
+  border-radius: 8px; /* Rounded corners */
+  transition: background-color 0.3s, border-color 0.3s; /* Smooth transition */
+}
+
+.location-btn:hover {
+  background-color: #005f73; /* Darker blue on hover */
+  border-color: #003f5c; /* Even darker blue border on hover */
+}
